@@ -12,7 +12,7 @@ In order to write SPI configurations and print values on the screen Assembly lan
 ● CE is PA3  
 ● RESET is PA6   
 
-SPI0_init subroutine is responsible for setting appropriate settings for SPI 0 module. In the Figure 1 given on the left an example configuration for the SSI is provided. 
+SPI0_init subroutine is responsible for setting appropriate settings for SPI 0 module. In the Figure 1 given on the left an example configuration for the SSI is provided.  
 There are two subroutines called SPI1_Write_cmd and SPI1_Write_data. These subroutines are intended to achieve LCD configuration and data transfer for LCD.
 
 ![image](https://user-images.githubusercontent.com/88316097/211329025-b13987e7-d802-4477-b1d7-0cc7b28aac25.png)
@@ -25,12 +25,11 @@ For the data, horizontal addressing is used.
 ![image](https://user-images.githubusercontent.com/88316097/211329295-7e3ade7b-733e-4a99-8f63-6d6bdca182ca.png)
 
 For example, in order to write L ;0x7f, 0x40, 0x40, 0x40, 0x40 hex values are sent by SPI1_Write_data subroutine. 
-The orientation for the writings is done by SPI1_Write_cmd subroutine and 0x80 sets X address to beginning and 0x40 sets Y address to 0. segment (there are 6 segments). 
+The orientation for the writings is done by SPI1_Write_cmd subroutine and 0x80 sets X address to beginning and 0x40 sets Y address to 0. segment (there are 6 segments).  
 By changing these hex values we are able to arrange the letters as in Figure 2. 
 
 
-In order to write numbers we use a subroutine called CNVRT which is used to obtain the digits of the hex number provided by the C code (data obtained from the sensor) and sending the digits 
-correspondent place on the LCD. In C code we defined pointers to specific locations of the memory and read the memory data in the assembly code. The numbers are predefined in writeDigit.s subroutine. 
+In order to write numbers we use a subroutine called CNVRT which is used to obtain the digits of the hex number provided by the C code (data obtained from the sensor) and sending the digits correspondent place on the LCD. In C code we defined pointers to specific locations of the memory and read the memory data in the assembly code. The numbers are predefined in writeDigit.s subroutine.  
 By comparing values we decide which number is provided and print the data. An example LCD screen display can be illustrated in Figure 3.
 
 ![image](https://user-images.githubusercontent.com/88316097/211329484-03da1bc7-7247-4866-b041-97465268ef20.png)
